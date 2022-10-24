@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+ /*------------- Whole Document---------------- */
+
+body {
+    font-family: 'Roboto';
+    font-size: 19px;
+}
+
+/*----------------- links ---------------------*/
+
+a { 
+  color: #4e89bf;
+}
+
+a:hover {
+    color: #396892; /* darker color when hovering */
+  }
+  
+  
+  
+/*------------Table of Contents (TOC)----------- */
+
+
+.tocify {
+  border: none;   /*Removes border */
+  border-radius: 0px; /* Gets rid of rounded corners on TOC */
+  font-size: 16px;
+}
+
+.tocify ul, .tocify li { /* Increases spacing between TOC headers*/
+    line-height: 25px !important;
+}
+
+.tocify ul {
+  border-right: solid 1px #eee; /* Thin right border on TOC list */
+}
+
+
+  /*----------LOGO above TOC---------*/
+
+#TOC::before {
+  content: "";
+  display: block;
+  height: 200px;
+  margin: 20px 20px 40px 20px;
+  background-image: url("unfpalogo.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/*----------------ADDING WHITE SPACE-------------*/
+
+.title {
+  margin-top: 2.75em !important;
+  margin-bottom: 0.75em;
+}
