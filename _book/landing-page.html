@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Landing Page | A Minimal Book Example</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Landing Page | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Landing Page | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="John Doe" />
+
+
+<meta name="date" content="2022-10-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="how-to-navigate-the-application.html"/>
+<link rel="next" href="select-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#background"><i class="fa fa-check"></i><b>1.1</b> Background</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#analytic-approach"><i class="fa fa-check"></i><b>1.2</b> Analytic Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="how-to-navigate-the-application.html"><a href="how-to-navigate-the-application.html"><i class="fa fa-check"></i><b>2</b> How to navigate the application</a></li>
+<li class="chapter" data-level="3" data-path="landing-page.html"><a href="landing-page.html"><i class="fa fa-check"></i><b>3</b> Landing Page</a></li>
+<li class="chapter" data-level="4" data-path="select-data.html"><a href="select-data.html"><i class="fa fa-check"></i><b>4</b> Select Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="select-data.html"><a href="select-data.html#survey-tab"><i class="fa fa-check"></i><b>4.1</b> Survey tab</a></li>
+<li class="chapter" data-level="4.2" data-path="select-data.html"><a href="select-data.html#census"><i class="fa fa-check"></i><b>4.2</b> Census</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="compare-data.html"><a href="compare-data.html"><i class="fa fa-check"></i><b>5</b> Compare Data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="compare-data.html"><a href="compare-data.html#correlations"><i class="fa fa-check"></i><b>5.1</b> Correlations</a></li>
+<li class="chapter" data-level="5.2" data-path="compare-data.html"><a href="compare-data.html#distributions."><i class="fa fa-check"></i><b>5.2</b> Distributions.</a></li>
+<li class="chapter" data-level="5.3" data-path="compare-data.html"><a href="compare-data.html#spatial"><i class="fa fa-check"></i><b>5.3</b> Spatial</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>6</b> Model Setup</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="model-setup.html"><a href="model-setup.html#build-the-model"><i class="fa fa-check"></i><b>6.1</b> Build the Model</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="model-setup.html"><a href="model-setup.html#stepwise-regression."><i class="fa fa-check"></i><b>6.1.1</b> Stepwise Regression.</a></li>
+<li class="chapter" data-level="6.1.2" data-path="model-setup.html"><a href="model-setup.html#random-effects"><i class="fa fa-check"></i><b>6.1.2</b> Random effects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html"><i class="fa fa-check"></i><b>7</b> Assessment of model fit</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html#assessment"><i class="fa fa-check"></i><b>7.1</b> Assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>8</b> Validation</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="validation.html"><a href="validation.html#cross-validation"><i class="fa fa-check"></i><b>8.1</b> Cross Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>9</b> Prediction</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="landing-page" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Landing Page<a href="landing-page.html#landing-page" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The landing page provides the gateway to the application features. Use the tabs at the top of the page to access different parts of the application.</p>
+<p><br/>
+<img src="img/LandingPage.png" id="id" class="class" style="width:70.0%;height:70.0%" alt="Application Landing Page" /></p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="how-to-navigate-the-application.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="select-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/SAEapp.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

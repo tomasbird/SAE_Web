@@ -1,0 +1,102 @@
+---
+title: "05 Create Files"
+author: "Tom Bird"
+date: "22/10/2022"
+output: html_document
+---
+
+
+# Step 5: Create harmonized data files
+
+## Step 5A: Create harmonized IPUMS data set
+
+Once you have applied the procedures from Step 4 to all of the variables identified in Step 2B, the final step is to create two .csv files that contain the harmonized IPUMS and DHS variables, respectively.
+
+First, create a data frame containing the following variables in the following order:
+
+- Survey area (typically the first IPUMS administrative level; for Sierra Leone, district is the survey area)
+- Census area (typically the second IPUMS administrative level; for Sierra Leone, chiefdom is the survey area)
+- All of the other variables you harmonized in Step 4
+
+For Sierra Leone, we used the following code to create this data frame:
+```{r warning = FALSE, eval = FALSE}
+sl_harmonized_ipums = data.frame(sl2015_ipums$GEO1ALT_SL2015R, sl2015_ipums$GEO2ALT_SL2015R,
+                                 sl2015_ipums$SL2015A_AGER1, sl2015_ipums$SL2015A_MARSTR,
+                                 sl2015_ipums$SL2015A_EDATTAINR1, sl2015_ipums$SL2015A_CHSURVR2,
+                                 sl2015_ipums$SL2015A_CHBORNR2, sl2015_ipums$SL2015A_URBAN17R,
+                                 sl2015_ipums$SL2015A_ACTIVITYR, sl2015_ipums$SL2015A_FLOORR,
+                                 sl2015_ipums$SL2015A_WALLSR2, sl2015_ipums$SL2015A_ROOFR,
+                                 sl2015_ipums$SL2015A_WATDRNKR, sl2015_ipums$SL2015A_LIGHTR,
+                                 sl2015_ipums$SL2015A_TOILETR2, sl2015_ipums$SL2015A_RELIGR,
+                                 sl2015_ipums$SL2015A_LANGPRIMR1, sl2015_ipums$SL2015A_RELATER,
+                                 sl2015_ipums$SL2015A_FUELCKR, sl2015_ipums$SL2015A_ETHNICR,
+                                 sl2015_ipums$SL2015A_LITR, sl2015_ipums$SL2015A_SMOKER,
+                                 sl2015_ipums$SL2015A_OCCR)
+```
+
+Next, assign simpler names to the harmonized variables by renaming the columns of this data frame. For example, instead of the harmonized IPUMS and DHS variables for marital status being named `sl2015A_MARSTR` and `V501R`, we will rename them both as `marst`.
+```{r warning = FALSE, eval = FALSE}
+colnames(sl_harmonized_ipums) = c("REGNAME", "ADMIN_NAME",
+                                  "age", "marst", "edattain", "chsurv",
+                                  "chborn", "urban", "activity", "floor",
+                                  "walls", "roof", "water", "electricity",
+                                  "toilet", "religion", "language", "relate",
+                                  "fuelcook", "ethnicity", "literacy",
+                                  "tobacco", "occupation")
+```
+
+Note: In order to be compatible with the SAE app, the new names of the survey area and census area must match their names in the DHS and IPUMS shapefiles, respectively. For Sierra Leone, the district variable in the DHS shapefile is called `REGNAME` and the chiefdom variable in the IPUMS shapefile is called `ADMIN_NAME`. Thus, we have to use these names instead of something more digestible like "district" and "chiefdom".
+
+Finally, use the `write.csv()` function to send the harmonized IPUMS data set to a .csv file:
+```{r warning = FALSE, eval = FALSE}
+write.csv(sl_harmonized_ipums, file = "sl_harmonized_ipums.csv", row.names = FALSE)
+```
+
+
+
+## Step 5B: Create harmonized DHS data set
+
+We repeat the procedures from Step 5A for the harmonized DHS variables. First, create a data frame containing the following variables in the following order:
+
+- DHS cluster number (this should be variable `V001`)
+- Rescaled sample weight from Step 3C (this should be variable `V005R`)
+- DHS indicators
+- Survey area (typically the first IPUMS administrative level; for Sierra Leone, district is the survey area)
+- All of the other variables you harmonized in Step 4
+
+For Sierra Leone, we used the following code to create this data frame:
+```{r warning = FALSE, eval = FALSE}
+sl_harmonized_dhs = data.frame(sl2019_dhs_ir$V001, sl2019_dhs_ir$V005R,
+                               sl2019_dhs_ir$V313R1, sl2019_dhs_ir$V313R2,
+                               sl2019_dhs_ir$V626R, sl2019_dhs_ir$SDISTR,
+                               sl2019_dhs_ir$V013, sl2019_dhs_ir$V501R,
+                               sl2019_dhs_ir$V149R1, sl2019_dhs_ir$V218R2,
+                               sl2019_dhs_ir$V201R2, sl2019_dhs_ir$V102R,
+                               sl2019_dhs_ir$V731R, sl2019_dhs_ir$V127R,
+                               sl2019_dhs_ir$V128R2, sl2019_dhs_ir$V129R,
+                               sl2019_dhs_ir$V113R, sl2019_dhs_ir$V119R,
+                               sl2019_dhs_ir$V116R2, sl2019_dhs_ir$V130R,
+                               sl2019_dhs_ir$V045CR1,  sl2019_dhs_ir$V150R,
+                               sl2019_dhs_ir$V161R, sl2019_dhs_ir$V131R,
+                               sl2019_dhs_ir$V155R, sl2019_dhs_ir$V463ZR,
+                               sl2019_dhs_ir$V717R)
+```
+
+Next, just like in Step 5A, assign simpler names to the harmonized variables by renaming the columns of this data frame:
+```{r warning = FALSE, eval = FALSE}
+colnames(sl_harmonized_dhs) = c("cluster_number", "weight", "contraceptive_any",
+                                "contraceptive_modern", "unmet_need", "REGNAME", "age", 
+                                "marst", "edattain", "chsurv", "chborn", "urban",
+                                "activity", "floor", "walls", "roof", "water",
+                                "electricity", "toilet", "religion", "language",
+                                "relate", "fuelcook", "ethnicity", "literacy",
+                                "tobacco", "occupation")
+```
+
+Finally, use the `write.csv()` function to send the harmonized IPUMS data set to a .csv file:
+```{r warning = FALSE, eval = FALSE}
+write.csv(sl_harmonized_dhs, file = "sl_harmonized_dhs.csv", row.names = FALSE)
+```
+
+
+

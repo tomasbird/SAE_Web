@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Step 3: Data preparation | 07 About the SAE App</title>
+  <meta name="description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Step 3: Data preparation | 07 About the SAE App" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Step 3: Data preparation | 07 About the SAE App" />
+  
+  <meta name="twitter:description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  
+
+<meta name="author" content="Tom Bird" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="step-2-sae-preliminaries.html"/>
+<link rel="next" href="step-4-variable-harmonization.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Small Area Estimation Tools</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>II Harmonization</b></span></li>
+<li class="chapter" data-level="2" data-path="harmonization.html"><a href="harmonization.html"><i class="fa fa-check"></i><b>2</b> Harmonization</a></li>
+<li class="chapter" data-level="3" data-path="step-1-download-data.html"><a href="step-1-download-data.html"><i class="fa fa-check"></i><b>3</b> Step 1: Download data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="step-1-download-data.html"><a href="step-1-download-data.html#step-1a-ipums-data-and-shapefiles"><i class="fa fa-check"></i><b>3.1</b> Step 1A: IPUMS data and shapefiles</a></li>
+<li class="chapter" data-level="3.2" data-path="step-1-download-data.html"><a href="step-1-download-data.html#step-1b-dhs-data-and-shapefiles"><i class="fa fa-check"></i><b>3.2</b> Step 1B: DHS data and shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html"><i class="fa fa-check"></i><b>4</b> Step 2: SAE preliminaries</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2a-identify-dhs-indicators-of-interest"><i class="fa fa-check"></i><b>4.1</b> Step 2A: Identify DHS indicators of interest</a></li>
+<li class="chapter" data-level="4.2" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2b-identify-variables-to-harmonize"><i class="fa fa-check"></i><b>4.2</b> Step 2B: Identify variables to harmonize</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2c-determine-target-population"><i class="fa fa-check"></i><b>4.3</b> Step 2C: Determine target population</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html"><i class="fa fa-check"></i><b>5</b> Step 3: Data preparation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3a-packages-and-user-defined-functions"><i class="fa fa-check"></i><b>5.1</b> Step 3A: Packages and user-defined functions</a></li>
+<li class="chapter" data-level="5.2" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3b-ipums-data-preparation"><i class="fa fa-check"></i><b>5.2</b> Step 3B: IPUMS data preparation</a></li>
+<li class="chapter" data-level="5.3" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3c-dhs-data-preparation"><i class="fa fa-check"></i><b>5.3</b> Step 3C: DHS data preparation</a></li>
+<li class="chapter" data-level="5.4" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3d-create-supporting-files"><i class="fa fa-check"></i><b>5.4</b> Step 3D: Create supporting files</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html"><i class="fa fa-check"></i><b>6</b> Step 4: Variable harmonization</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4a-category-alignment"><i class="fa fa-check"></i><b>6.1</b> Step 4A: Category alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4b-create-harmonized-ipums-and-dhs-variables"><i class="fa fa-check"></i><b>6.2</b> Step 4B: Create harmonized IPUMS and DHS variables</a></li>
+<li class="chapter" data-level="6.3" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4c-write-harmonization-output-to-excel"><i class="fa fa-check"></i><b>6.3</b> Step 4C: Write harmonization output to Excel</a></li>
+<li class="chapter" data-level="6.4" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4d-miscellaneous-notes"><i class="fa fa-check"></i><b>6.4</b> Step 4D: Miscellaneous notes</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html"><i class="fa fa-check"></i><b>7</b> Step 5: Create harmonized data files</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html#step-5a-create-harmonized-ipums-data-set"><i class="fa fa-check"></i><b>7.1</b> Step 5A: Create harmonized IPUMS data set</a></li>
+<li class="chapter" data-level="7.2" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html#step-5b-create-harmonized-dhs-data-set"><i class="fa fa-check"></i><b>7.2</b> Step 5B: Create harmonized DHS data set</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html"><i class="fa fa-check"></i><b>8</b> Step 4: Variable harmonization</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4a-category-alignment-1"><i class="fa fa-check"></i><b>8.1</b> Step 4A: Category alignment</a></li>
+<li class="chapter" data-level="8.2" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4b-create-harmonized-ipums-and-dhs-variables-1"><i class="fa fa-check"></i><b>8.2</b> Step 4B: Create harmonized IPUMS and DHS variables</a></li>
+<li class="chapter" data-level="8.3" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4c-write-harmonization-output-to-excel-1"><i class="fa fa-check"></i><b>8.3</b> Step 4C: Write harmonization output to Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html"><i class="fa fa-check"></i><b>9</b> Appendix: User-defined R functions</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#compare_categories"><i class="fa fa-check"></i><b>9.1</b> compare_categories</a></li>
+<li class="chapter" data-level="9.2" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#new_var_label"><i class="fa fa-check"></i><b>9.2</b> new_var_label</a></li>
+<li class="chapter" data-level="9.3" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#write_ipums_output"><i class="fa fa-check"></i><b>9.3</b> write_ipums_output</a></li>
+<li class="chapter" data-level="9.4" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#write_dhs_output"><i class="fa fa-check"></i><b>9.4</b> write_dhs_output</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="about-the-application.html"><a href="about-the-application.html"><i class="fa fa-check"></i><b>10</b> About the Application</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="about-the-application.html"><a href="about-the-application.html#how-to-navigate-the-application"><i class="fa fa-check"></i><b>10.1</b> How to navigate the application</a></li>
+<li class="chapter" data-level="10.2" data-path="about-the-application.html"><a href="about-the-application.html#landing-page"><i class="fa fa-check"></i><b>10.2</b> Landing Page</a></li>
+</ul></li>
+<li class="part"><span><b>III SAE Application</b></span></li>
+<li class="chapter" data-level="11" data-path="selecting-data.html"><a href="selecting-data.html"><i class="fa fa-check"></i><b>11</b> Selecting Data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="selecting-data.html"><a href="selecting-data.html#survey-tab"><i class="fa fa-check"></i><b>11.1</b> Survey tab</a></li>
+<li class="chapter" data-level="11.2" data-path="selecting-data.html"><a href="selecting-data.html#census"><i class="fa fa-check"></i><b>11.2</b> Census</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="compare-data.html"><a href="compare-data.html"><i class="fa fa-check"></i><b>12</b> Compare Data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="compare-data.html"><a href="compare-data.html#correlations"><i class="fa fa-check"></i><b>12.1</b> Correlations</a></li>
+<li class="chapter" data-level="12.2" data-path="compare-data.html"><a href="compare-data.html#distributions."><i class="fa fa-check"></i><b>12.2</b> Distributions.</a></li>
+<li class="chapter" data-level="12.3" data-path="compare-data.html"><a href="compare-data.html#spatial"><i class="fa fa-check"></i><b>12.3</b> Spatial</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>13</b> Model Setup</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="model-setup.html"><a href="model-setup.html#build-the-model"><i class="fa fa-check"></i><b>13.1</b> Build the Model</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="model-setup.html"><a href="model-setup.html#stepwise-regression."><i class="fa fa-check"></i><b>13.1.1</b> Stepwise Regression.</a></li>
+<li class="chapter" data-level="13.1.2" data-path="model-setup.html"><a href="model-setup.html#random-effects"><i class="fa fa-check"></i><b>13.1.2</b> Random effects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html"><i class="fa fa-check"></i><b>14</b> Assessment of model fit</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html#assessment"><i class="fa fa-check"></i><b>14.1</b> Assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>15</b> Validation</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="validation.html"><a href="validation.html#cross-validation"><i class="fa fa-check"></i><b>15.1</b> Cross Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>16</b> Prediction</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">07 About the SAE App</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="step-3-data-preparation" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Step 3: Data preparation<a href="step-3-data-preparation.html#step-3-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>For the remainder of this manual, we will illustrate the processes of data cleaning and harmonization using data from Sierra Leone. Please note that while the general procedures in Steps 3, 4, and 5 are applicable to other SAE projects, the specific tasks required for other projects may vary.</p>
+<p>If you do not already have <code>R</code> and <code>RStudio</code> downloaded on your computer, you will need to download them before proceeding. This page (<a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a>) provides instructions for downloading <code>R</code>, and this page (<a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a>) provides instructions for downloading <code>RStudio</code>. Once you have downloaded them, create a new R script called <code>[Country name] harmonization.R</code>.</p>
+<div id="step-3a-packages-and-user-defined-functions" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Step 3A: Packages and user-defined functions<a href="step-3-data-preparation.html#step-3a-packages-and-user-defined-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before reading in the data sets you downloaded in Step 1, load the following packages into <code>R</code> using the <code>library()</code> function.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="step-3-data-preparation.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
+<span id="cb1-2"><a href="step-3-data-preparation.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-3"><a href="step-3-data-preparation.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb1-4"><a href="step-3-data-preparation.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(expss)</span>
+<span id="cb1-5"><a href="step-3-data-preparation.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-6"><a href="step-3-data-preparation.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span></code></pre></div>
+<p>Note: If you have not previously one or more of these packages, you will need to install them using the <code>install.packages()</code> function (e.g., <code>install.packages(</code>“foreign”<code>)</code>).</p>
+<p>We will also make use of four user-defined functions that are designed to clean up the harmonization process: <code>compare_categories()</code>, <code>new_var_label()</code>, <code>write_ipums_output()</code>, and <code>write_dhs_output()</code>. See the Appendix to read about these functions in detail. Feel free to ignore these details for now, though — you can always refer back to them later.</p>
+</div>
+<div id="step-3b-ipums-data-preparation" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Step 3B: IPUMS data preparation<a href="step-3-data-preparation.html#step-3b-ipums-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First, identify the path to the IPUMS data file you downloaded in Step 1A:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="step-3-data-preparation.html#cb2-1" aria-hidden="true" tabindex="-1"></a>path_ipums <span class="ot">=</span> <span class="st">&quot;~/_OriginalData/SierraLeoneIPUMS2015/sl2015a_ipums.sav&quot;</span></span></code></pre></div>
+<p>Next, store the IPUMS data file as a data frame. It may be helpful to store an original version of the data frame and make a copy for your actual analysis:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="step-3-data-preparation.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store original</span></span>
+<span id="cb3-2"><a href="step-3-data-preparation.html#cb3-2" aria-hidden="true" tabindex="-1"></a>sl2015_ipums_orig <span class="ot">=</span> <span class="fu">read.spss</span>(path_ipums, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-3"><a href="step-3-data-preparation.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="step-3-data-preparation.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Make copy</span></span>
+<span id="cb3-5"><a href="step-3-data-preparation.html#cb3-5" aria-hidden="true" tabindex="-1"></a>sl2015_ipums <span class="ot">=</span> sl2015_ipums_orig</span></code></pre></div>
+<p>If you’d like, you can use the <code>View()</code> and <code>colnames()</code> functions to view a list of the names of all of the variables in the IPUMS data frame. This may be helpful if you did not identify the names of all of your predictor variables in Step 2B.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="step-3-data-preparation.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(<span class="fu">colnames</span>(sl2015_ipums))</span></code></pre></div>
+<p>For the Sierra Leone data, it is necessary to convert age to a numeric variable, as it was categorical by default. This is an example of a country-specific data cleaning task. You may not need to do this for other countries, but you may also find that adjustments need to be made for other variables.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="step-3-data-preparation.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sl2015_ipums<span class="sc">$</span>SL2015A_AGE)[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb5-2"><a href="step-3-data-preparation.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="step-3-data-preparation.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sl2015_ipums<span class="sc">$</span>SL2015A_AGE)[<span class="fu">which</span>(<span class="fu">levels</span>(sl2015_ipums<span class="sc">$</span>SL2015A_AGE) <span class="sc">==</span> <span class="st">&quot;101+ years&quot;</span>)] <span class="ot">=</span> <span class="st">&quot;101&quot;</span></span>
+<span id="cb5-4"><a href="step-3-data-preparation.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="step-3-data-preparation.html#cb5-5" aria-hidden="true" tabindex="-1"></a>sl2015_ipums<span class="sc">$</span>SL2015A_AGE <span class="ot">=</span> <span class="fu">as.numeric</span>(sl2015_ipums<span class="sc">$</span>SL2015A_AGE) <span class="sc">-</span> <span class="dv">1</span></span></code></pre></div>
+<p>Finally, filter the data frame to obtain the target population identified in Step 2C. You may need to explore the data frame a bit to figure out how to do this.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="step-3-data-preparation.html#cb6-1" aria-hidden="true" tabindex="-1"></a>sl2015_ipums <span class="ot">=</span> sl2015_ipums[(sl2015_ipums<span class="sc">$</span>SL2015A_SEX <span class="sc">==</span> <span class="st">&quot;Female&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb6-2"><a href="step-3-data-preparation.html#cb6-2" aria-hidden="true" tabindex="-1"></a>                               sl2015_ipums<span class="sc">$</span>SL2015A_AGE <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> sl2015_ipums<span class="sc">$</span>SL2015A_AGE <span class="sc">&lt;=</span> <span class="dv">49</span> <span class="sc">&amp;</span></span>
+<span id="cb6-3"><a href="step-3-data-preparation.html#cb6-3" aria-hidden="true" tabindex="-1"></a>                               sl2015_ipums<span class="sc">$</span>SL2015A_HHTYPE <span class="sc">==</span> <span class="st">&quot;Household&quot;</span>),]</span></code></pre></div>
+</div>
+<div id="step-3c-dhs-data-preparation" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Step 3C: DHS data preparation<a href="step-3-data-preparation.html#step-3c-dhs-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here, we essentially reapply the procedures from Step 3B for the DHS sample. First, identify the path to the DHS data file you downloaded in Step 1B:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="step-3-data-preparation.html#cb7-1" aria-hidden="true" tabindex="-1"></a>path_dhs <span class="ot">=</span> <span class="st">&quot;~/_OriginalData/SierraLeoneDHS2019/SL_2019_DHS_10012021_1417_61748/SLIR7ASV/SLIR7AFL.SAV&quot;</span></span></code></pre></div>
+<p>Next, store the DHS data file as a data frame. Again, it may be helpful to store an original version of the data frame and make a copy for your actual analysis:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="step-3-data-preparation.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store original</span></span>
+<span id="cb8-2"><a href="step-3-data-preparation.html#cb8-2" aria-hidden="true" tabindex="-1"></a>sl2019_dhs_ir_orig <span class="ot">=</span> <span class="fu">read.spss</span>(path_dhs, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-3"><a href="step-3-data-preparation.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="step-3-data-preparation.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Make copy</span></span>
+<span id="cb8-5"><a href="step-3-data-preparation.html#cb8-5" aria-hidden="true" tabindex="-1"></a>sl2019_dhs_ir <span class="ot">=</span> sl2019_dhs_ir_orig</span></code></pre></div>
+<p>If you’d like, you can use the <code>View()</code> and <code>attr()</code> functions to view a list of the names of all of the variables in the DHS data frame. This may be helpful if you did not identify the names of your indicator(s) of interest in Step 2A or your DHS predictors in Step 2B.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="step-3-data-preparation.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(<span class="fu">attr</span>(sl2019_dhs_ir, <span class="st">&quot;variable.labels&quot;</span>))</span></code></pre></div>
+<p>At this point, you may need to clean the data and/or filter it in some way to obtain the target population, much like we did in Step 3B. For the DHS data from Sierra Leone, neither of these tasks were necessary.</p>
+<p>Next, you will need to rescale the individual sample weight variable (<code>V005</code>) by dividing it by 1,000,000. Then use the user-defined function <code>new_var_label()</code> to assign a label to the new weight variable. This new variable label should be the original label concatenated with “(recode)”.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="step-3-data-preparation.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rescale sample weight</span></span>
+<span id="cb10-2"><a href="step-3-data-preparation.html#cb10-2" aria-hidden="true" tabindex="-1"></a>sl2019_dhs_ir<span class="sc">$</span>V005R <span class="ot">=</span> sl2019_dhs_ir<span class="sc">$</span>V005<span class="sc">/</span><span class="dv">1000000</span></span>
+<span id="cb10-3"><a href="step-3-data-preparation.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="step-3-data-preparation.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add variable label</span></span>
+<span id="cb10-5"><a href="step-3-data-preparation.html#cb10-5" aria-hidden="true" tabindex="-1"></a>sl2019_dhs_ir <span class="ot">=</span> <span class="fu">new_var_label</span>(sl2019_dhs_ir,</span>
+<span id="cb10-6"><a href="step-3-data-preparation.html#cb10-6" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&quot;Women&#39;s individual sample weight (6 decimals) (recode)&quot;</span>)</span></code></pre></div>
+</div>
+<div id="step-3d-create-supporting-files" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Step 3D: Create supporting files<a href="step-3-data-preparation.html#step-3d-create-supporting-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The final step before beginning the harmonization process is to create some supporting documents that will help you along the way.</p>
+<p>First, in Excel, create a blank workbook called <code>[Country name] Harmonization - Output.xlsx</code>. You will send weighted frequency tables of the harmonized variables to this workbook in Step 4. Also, in <code>R</code>, use the <code>createWorkbook()</code> function to create an empty object that will help you send the harmonized output to Excel.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="step-3-data-preparation.html#cb11-1" aria-hidden="true" tabindex="-1"></a>sl_harmonization_output <span class="ot">=</span> <span class="fu">createWorkbook</span>()</span></code></pre></div>
+<p>Next, in Excel, create a blank workbook called <code>[Country name] Harmonization - Recodes.xlsx</code>. You will use this to stay organized during the process of category harmonization. Each sheet of this workbook should look something like the following:</p>
+<div class="figure">
+<img src="img/manual_step_3d.png" id="id" class="class" style="width:70.0%;height:70.0%" alt="" />
+<p class="caption">Harmonization flowchart</p>
+</div>
+<p>Finally, create a document to take notes, either in Microsoft Word, Google Docs, or your preferred note-taking software. Aligning the categories of different variables between the IPUMS and DHS samples requires some decision making, so you will want a space to jot down your justifications for these decisions.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="step-2-sae-preliminaries.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="step-4-variable-harmonization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-Harmonize-Indicators.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

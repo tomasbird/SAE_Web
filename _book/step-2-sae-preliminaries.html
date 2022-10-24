@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Step 2: SAE preliminaries | 07 About the SAE App</title>
+  <meta name="description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Step 2: SAE preliminaries | 07 About the SAE App" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Step 2: SAE preliminaries | 07 About the SAE App" />
+  
+  <meta name="twitter:description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  
+
+<meta name="author" content="Tom Bird" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="step-1-download-data.html"/>
+<link rel="next" href="step-3-data-preparation.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Small Area Estimation Tools</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>II Harmonization</b></span></li>
+<li class="chapter" data-level="2" data-path="harmonization.html"><a href="harmonization.html"><i class="fa fa-check"></i><b>2</b> Harmonization</a></li>
+<li class="chapter" data-level="3" data-path="step-1-download-data.html"><a href="step-1-download-data.html"><i class="fa fa-check"></i><b>3</b> Step 1: Download data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="step-1-download-data.html"><a href="step-1-download-data.html#step-1a-ipums-data-and-shapefiles"><i class="fa fa-check"></i><b>3.1</b> Step 1A: IPUMS data and shapefiles</a></li>
+<li class="chapter" data-level="3.2" data-path="step-1-download-data.html"><a href="step-1-download-data.html#step-1b-dhs-data-and-shapefiles"><i class="fa fa-check"></i><b>3.2</b> Step 1B: DHS data and shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html"><i class="fa fa-check"></i><b>4</b> Step 2: SAE preliminaries</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2a-identify-dhs-indicators-of-interest"><i class="fa fa-check"></i><b>4.1</b> Step 2A: Identify DHS indicators of interest</a></li>
+<li class="chapter" data-level="4.2" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2b-identify-variables-to-harmonize"><i class="fa fa-check"></i><b>4.2</b> Step 2B: Identify variables to harmonize</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2c-determine-target-population"><i class="fa fa-check"></i><b>4.3</b> Step 2C: Determine target population</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html"><i class="fa fa-check"></i><b>5</b> Step 3: Data preparation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3a-packages-and-user-defined-functions"><i class="fa fa-check"></i><b>5.1</b> Step 3A: Packages and user-defined functions</a></li>
+<li class="chapter" data-level="5.2" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3b-ipums-data-preparation"><i class="fa fa-check"></i><b>5.2</b> Step 3B: IPUMS data preparation</a></li>
+<li class="chapter" data-level="5.3" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3c-dhs-data-preparation"><i class="fa fa-check"></i><b>5.3</b> Step 3C: DHS data preparation</a></li>
+<li class="chapter" data-level="5.4" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3d-create-supporting-files"><i class="fa fa-check"></i><b>5.4</b> Step 3D: Create supporting files</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html"><i class="fa fa-check"></i><b>6</b> Step 4: Variable harmonization</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4a-category-alignment"><i class="fa fa-check"></i><b>6.1</b> Step 4A: Category alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4b-create-harmonized-ipums-and-dhs-variables"><i class="fa fa-check"></i><b>6.2</b> Step 4B: Create harmonized IPUMS and DHS variables</a></li>
+<li class="chapter" data-level="6.3" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4c-write-harmonization-output-to-excel"><i class="fa fa-check"></i><b>6.3</b> Step 4C: Write harmonization output to Excel</a></li>
+<li class="chapter" data-level="6.4" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4d-miscellaneous-notes"><i class="fa fa-check"></i><b>6.4</b> Step 4D: Miscellaneous notes</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html"><i class="fa fa-check"></i><b>7</b> Step 5: Create harmonized data files</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html#step-5a-create-harmonized-ipums-data-set"><i class="fa fa-check"></i><b>7.1</b> Step 5A: Create harmonized IPUMS data set</a></li>
+<li class="chapter" data-level="7.2" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html#step-5b-create-harmonized-dhs-data-set"><i class="fa fa-check"></i><b>7.2</b> Step 5B: Create harmonized DHS data set</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html"><i class="fa fa-check"></i><b>8</b> Step 4: Variable harmonization</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4a-category-alignment-1"><i class="fa fa-check"></i><b>8.1</b> Step 4A: Category alignment</a></li>
+<li class="chapter" data-level="8.2" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4b-create-harmonized-ipums-and-dhs-variables-1"><i class="fa fa-check"></i><b>8.2</b> Step 4B: Create harmonized IPUMS and DHS variables</a></li>
+<li class="chapter" data-level="8.3" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4c-write-harmonization-output-to-excel-1"><i class="fa fa-check"></i><b>8.3</b> Step 4C: Write harmonization output to Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html"><i class="fa fa-check"></i><b>9</b> Appendix: User-defined R functions</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#compare_categories"><i class="fa fa-check"></i><b>9.1</b> compare_categories</a></li>
+<li class="chapter" data-level="9.2" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#new_var_label"><i class="fa fa-check"></i><b>9.2</b> new_var_label</a></li>
+<li class="chapter" data-level="9.3" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#write_ipums_output"><i class="fa fa-check"></i><b>9.3</b> write_ipums_output</a></li>
+<li class="chapter" data-level="9.4" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#write_dhs_output"><i class="fa fa-check"></i><b>9.4</b> write_dhs_output</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="about-the-application.html"><a href="about-the-application.html"><i class="fa fa-check"></i><b>10</b> About the Application</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="about-the-application.html"><a href="about-the-application.html#how-to-navigate-the-application"><i class="fa fa-check"></i><b>10.1</b> How to navigate the application</a></li>
+<li class="chapter" data-level="10.2" data-path="about-the-application.html"><a href="about-the-application.html#landing-page"><i class="fa fa-check"></i><b>10.2</b> Landing Page</a></li>
+</ul></li>
+<li class="part"><span><b>III SAE Application</b></span></li>
+<li class="chapter" data-level="11" data-path="selecting-data.html"><a href="selecting-data.html"><i class="fa fa-check"></i><b>11</b> Selecting Data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="selecting-data.html"><a href="selecting-data.html#survey-tab"><i class="fa fa-check"></i><b>11.1</b> Survey tab</a></li>
+<li class="chapter" data-level="11.2" data-path="selecting-data.html"><a href="selecting-data.html#census"><i class="fa fa-check"></i><b>11.2</b> Census</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="compare-data.html"><a href="compare-data.html"><i class="fa fa-check"></i><b>12</b> Compare Data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="compare-data.html"><a href="compare-data.html#correlations"><i class="fa fa-check"></i><b>12.1</b> Correlations</a></li>
+<li class="chapter" data-level="12.2" data-path="compare-data.html"><a href="compare-data.html#distributions."><i class="fa fa-check"></i><b>12.2</b> Distributions.</a></li>
+<li class="chapter" data-level="12.3" data-path="compare-data.html"><a href="compare-data.html#spatial"><i class="fa fa-check"></i><b>12.3</b> Spatial</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>13</b> Model Setup</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="model-setup.html"><a href="model-setup.html#build-the-model"><i class="fa fa-check"></i><b>13.1</b> Build the Model</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="model-setup.html"><a href="model-setup.html#stepwise-regression."><i class="fa fa-check"></i><b>13.1.1</b> Stepwise Regression.</a></li>
+<li class="chapter" data-level="13.1.2" data-path="model-setup.html"><a href="model-setup.html#random-effects"><i class="fa fa-check"></i><b>13.1.2</b> Random effects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html"><i class="fa fa-check"></i><b>14</b> Assessment of model fit</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html#assessment"><i class="fa fa-check"></i><b>14.1</b> Assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>15</b> Validation</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="validation.html"><a href="validation.html#cross-validation"><i class="fa fa-check"></i><b>15.1</b> Cross Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>16</b> Prediction</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">07 About the SAE App</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="step-2-sae-preliminaries" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Step 2: SAE preliminaries<a href="step-2-sae-preliminaries.html#step-2-sae-preliminaries" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="step-2a-identify-dhs-indicators-of-interest" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Step 2A: Identify DHS indicators of interest<a href="step-2-sae-preliminaries.html#step-2a-identify-dhs-indicators-of-interest" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After downloading the data, the first step is to identify which DHS indicator(s) you are interested in modeling. DHS samples contain many variables that record information about a wide range of topics, including health behaviors, family planning, and more. Since the processes of data harmonization and SAE modeling are often motivated by a specific real-world problem, it is likely that you have already identified the indicator(s) of interest.</p>
+<p>At this stage, it is helpful to note the name(s) of the DHS variable(s) that can be used to construct these indicator(s). Each variable name is a string of capital letters and numbers, usually beginning with “V”. These variable names can be identified using the Guide to DHS Statistics page (<a href="https://dhsprogram.com/Data/Guide-to-DHS-Statistics/index.cfm" class="uri">https://dhsprogram.com/Data/Guide-to-DHS-Statistics/index.cfm</a>) on the DHS website:</p>
+<div class="figure">
+<img src="img/manual_step_2a.png" id="id" class="class" style="width:70.0%;height:70.0%" alt="" />
+<p class="caption">Harmonization flowchart</p>
+</div>
+<p>You can also identify the variable names later, after you load the DHS data into <code>R</code> in Step 3C.</p>
+<p>For the Sierra Leone case study, we are interested in three indicators:</p>
+<ol style="list-style-type: decimal">
+<li>Any contraceptive use (constructed using V313)</li>
+<li>Modern contraceptive use (constructed using V313)</li>
+<li>Unmet need (constructed using V626)</li>
+</ol>
+</div>
+<div id="step-2b-identify-variables-to-harmonize" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Step 2B: Identify variables to harmonize<a href="step-2-sae-preliminaries.html#step-2b-identify-variables-to-harmonize" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The next step is to identify all the variables that (1) appear in both the IPUMS and DHS samples and (2) could reasonably be used to predict the DHS indicator(s) listed in Step 2A. Here are some common predictor variables that are likely to appear in both the IPUMS and DHS samples:</p>
+<ul>
+<li>Age</li>
+<li>Marital status</li>
+<li>Educational attainment</li>
+<li>Religion</li>
+<li>Number of children ever born</li>
+<li>Number of children surviving</li>
+<li>Urban/rural status</li>
+<li>Employment status</li>
+<li>Occupation</li>
+<li>Literacy</li>
+<li>Primary language</li>
+<li>Ethnicity</li>
+<li>Relationship to household head</li>
+<li>Ownership of durable goods (e.g., car, bicycle, refrigerator, television, radio, phone)</li>
+<li>Household characteristics (e.g., floor material, roof material, wall material, water source, electricity, toilet, cooking fuel)</li>
+</ul>
+<p>Note that this list is just a starting point — you may find other variables with predictive potential that appear in both samples.</p>
+<p>Just like in Step 2A, it is helpful at this stage to identify the names corresponding to these predictor variables in both the DHS and IPUMS samples. For the DHS data, these variable names can be identified using the Guide to DHS Statistics page (<a href="https://dhsprogram.com/Data/Guide-to-DHS-Statistics/index.cfm" class="uri">https://dhsprogram.com/Data/Guide-to-DHS-Statistics/index.cfm</a>) on the DHS website — see the screenshot in Step 2A. For the IPUMS data, the variable names can be identified via the variable list for your sample on the IPUMS International website (e.g., <a href="https://international.ipums.org/international-action/variables/samples?id=sl2015a" class="uri">https://international.ipums.org/international-action/variables/samples?id=sl2015a</a>):</p>
+<div class="figure">
+<img src="img/manual_step_2b.png" id="id" class="class" style="width:70.0%;height:70.0%" alt="" />
+<p class="caption">Harmonization flowchart</p>
+</div>
+<p>You can also confirm the variable names for your predictors after you load the IPUMS and DHS data into <code>R</code> in Steps 3B and 3C, respectively.</p>
+<p>In some cases, one variable in either the IPUMS or DHS sample may be comparable with a combination of two or more variables in the other sample. For example, variable <code>V125</code> from the Sierra Leone DHS data records whether the individual resides in a household that owns a car or a truck. However, in the Sierra Leone IPUMS data, this information is split up into two variables: <code>SL2015A_CAR</code> records whether the individual lives in a household that owns a car, while <code>SL2015A_TRUCK</code> records whether the individual lives in a household that owns a truck.</p>
+<p>You will also need to harmonize the survey area variable, which is typically the first IPUMS administrative level. This variable should, by the principles of SAE, appear in both the DHS sample and the IPUMS sample. In the case of Sierra Leone, district is the survey area variable.</p>
+<p>I would suggest making a spreadsheet to keep track of the variable names from each sample. Here is a short example for the Sierra Leone data:</p>
+<p>At this stage, you should also identify the census area variable, which is typically the second IPUMS administrative level. By the principles of SAE, this variable should appear in the IPUMS sample, but not the DHS sample. Thus, you cannot harmonize the census area across the two samples, but it is worthwhile to identify the variable name associated with it. In the case of Sierra Leone, chiefdom is the census area variable.</p>
+</div>
+<div id="step-2c-determine-target-population" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Step 2C: Determine target population<a href="step-2-sae-preliminaries.html#step-2c-determine-target-population" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You should also determine the target population for your analysis — i.e., the demographic subset that is comparable across the IPUMS and DHS samples. Four characteristics that often (but not always) define the target population are:</p>
+<ol style="list-style-type: decimal">
+<li>Sex
+<ul>
+<li>Since censuses collect data for respondents of both sexes, this is primarily a concern for the DHS sample. Are the DHS indicators of interest recorded for women only, men only, or both? (Note that if you know this in advance, you can also filter by sex when downloading the DHS data in Step 1B.)</li>
+</ul></li>
+<li>Age
+<ul>
+<li>Since censuses collect data for respondents of all ages, this is primarily a concern for the DHS sample. DHS typically collects data only for individuals aged 15-49 (or 15-59).</li>
+</ul></li>
+<li>Household ownership
+<ul>
+<li>Were the data in each sample collected from individuals in private households, collective dwellings, or both? This needs to be confirmed for both the IPUMS and DHS samples. DHS typically collects data only from private households, but censuses may collect data from collectives for some variables. This information can be retrieved from census documentation, which is often available on either the IPUMS website or the national statistical office of the country of interest. It can also be useful to check the universe tab (e.g., <a href="https://international.ipums.org/international-action/variables/SL2015A_0404#universe_section" class="uri">https://international.ipums.org/international-action/variables/SL2015A_0404#universe_section</a>) for individual variables in the IPUMS sample.</li>
+</ul></li>
+<li>Residence status
+<ul>
+<li>Were the samples extracted from a de jure population or a de facto population? In a de jure survey/census, each respondent is enumerated based on their usual residence, regardless of where they are located on the day of the survey/census. In a de facto census, each respondent is enumerated based on their location on the day of the survey/census, regardless of where they usually reside. De jure/de facto status can usually be retrieved from census and DHS documentation.</li>
+</ul></li>
+</ol>
+<p>In some cases, other variables (e.g., marital status, household occupancy/vacancy) may also shape the target population. It is important to consider the unique circumstances of your research question and analysis plan. For the Sierra Leone case study, the target population is the de facto population of women aged 15-49 in occupied, private households.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="step-1-download-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="step-3-data-preparation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-SAE-Preliminaries.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

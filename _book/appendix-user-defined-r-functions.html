@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Appendix: User-defined R functions | 07 About the SAE App</title>
+  <meta name="description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Appendix: User-defined R functions | 07 About the SAE App" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Appendix: User-defined R functions | 07 About the SAE App" />
+  
+  <meta name="twitter:description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  
+
+<meta name="author" content="Tom Bird" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="step-4-variable-harmonization-1.html"/>
+<link rel="next" href="about-the-application.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Small Area Estimation Tools</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>II Harmonization</b></span></li>
+<li class="chapter" data-level="2" data-path="harmonization.html"><a href="harmonization.html"><i class="fa fa-check"></i><b>2</b> Harmonization</a></li>
+<li class="chapter" data-level="3" data-path="step-1-download-data.html"><a href="step-1-download-data.html"><i class="fa fa-check"></i><b>3</b> Step 1: Download data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="step-1-download-data.html"><a href="step-1-download-data.html#step-1a-ipums-data-and-shapefiles"><i class="fa fa-check"></i><b>3.1</b> Step 1A: IPUMS data and shapefiles</a></li>
+<li class="chapter" data-level="3.2" data-path="step-1-download-data.html"><a href="step-1-download-data.html#step-1b-dhs-data-and-shapefiles"><i class="fa fa-check"></i><b>3.2</b> Step 1B: DHS data and shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html"><i class="fa fa-check"></i><b>4</b> Step 2: SAE preliminaries</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2a-identify-dhs-indicators-of-interest"><i class="fa fa-check"></i><b>4.1</b> Step 2A: Identify DHS indicators of interest</a></li>
+<li class="chapter" data-level="4.2" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2b-identify-variables-to-harmonize"><i class="fa fa-check"></i><b>4.2</b> Step 2B: Identify variables to harmonize</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2c-determine-target-population"><i class="fa fa-check"></i><b>4.3</b> Step 2C: Determine target population</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html"><i class="fa fa-check"></i><b>5</b> Step 3: Data preparation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3a-packages-and-user-defined-functions"><i class="fa fa-check"></i><b>5.1</b> Step 3A: Packages and user-defined functions</a></li>
+<li class="chapter" data-level="5.2" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3b-ipums-data-preparation"><i class="fa fa-check"></i><b>5.2</b> Step 3B: IPUMS data preparation</a></li>
+<li class="chapter" data-level="5.3" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3c-dhs-data-preparation"><i class="fa fa-check"></i><b>5.3</b> Step 3C: DHS data preparation</a></li>
+<li class="chapter" data-level="5.4" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3d-create-supporting-files"><i class="fa fa-check"></i><b>5.4</b> Step 3D: Create supporting files</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html"><i class="fa fa-check"></i><b>6</b> Step 4: Variable harmonization</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4a-category-alignment"><i class="fa fa-check"></i><b>6.1</b> Step 4A: Category alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4b-create-harmonized-ipums-and-dhs-variables"><i class="fa fa-check"></i><b>6.2</b> Step 4B: Create harmonized IPUMS and DHS variables</a></li>
+<li class="chapter" data-level="6.3" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4c-write-harmonization-output-to-excel"><i class="fa fa-check"></i><b>6.3</b> Step 4C: Write harmonization output to Excel</a></li>
+<li class="chapter" data-level="6.4" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4d-miscellaneous-notes"><i class="fa fa-check"></i><b>6.4</b> Step 4D: Miscellaneous notes</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html"><i class="fa fa-check"></i><b>7</b> Step 5: Create harmonized data files</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html#step-5a-create-harmonized-ipums-data-set"><i class="fa fa-check"></i><b>7.1</b> Step 5A: Create harmonized IPUMS data set</a></li>
+<li class="chapter" data-level="7.2" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html#step-5b-create-harmonized-dhs-data-set"><i class="fa fa-check"></i><b>7.2</b> Step 5B: Create harmonized DHS data set</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html"><i class="fa fa-check"></i><b>8</b> Step 4: Variable harmonization</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4a-category-alignment-1"><i class="fa fa-check"></i><b>8.1</b> Step 4A: Category alignment</a></li>
+<li class="chapter" data-level="8.2" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4b-create-harmonized-ipums-and-dhs-variables-1"><i class="fa fa-check"></i><b>8.2</b> Step 4B: Create harmonized IPUMS and DHS variables</a></li>
+<li class="chapter" data-level="8.3" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4c-write-harmonization-output-to-excel-1"><i class="fa fa-check"></i><b>8.3</b> Step 4C: Write harmonization output to Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html"><i class="fa fa-check"></i><b>9</b> Appendix: User-defined R functions</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#compare_categories"><i class="fa fa-check"></i><b>9.1</b> compare_categories</a></li>
+<li class="chapter" data-level="9.2" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#new_var_label"><i class="fa fa-check"></i><b>9.2</b> new_var_label</a></li>
+<li class="chapter" data-level="9.3" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#write_ipums_output"><i class="fa fa-check"></i><b>9.3</b> write_ipums_output</a></li>
+<li class="chapter" data-level="9.4" data-path="appendix-user-defined-r-functions.html"><a href="appendix-user-defined-r-functions.html#write_dhs_output"><i class="fa fa-check"></i><b>9.4</b> write_dhs_output</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="about-the-application.html"><a href="about-the-application.html"><i class="fa fa-check"></i><b>10</b> About the Application</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="about-the-application.html"><a href="about-the-application.html#how-to-navigate-the-application"><i class="fa fa-check"></i><b>10.1</b> How to navigate the application</a></li>
+<li class="chapter" data-level="10.2" data-path="about-the-application.html"><a href="about-the-application.html#landing-page"><i class="fa fa-check"></i><b>10.2</b> Landing Page</a></li>
+</ul></li>
+<li class="part"><span><b>III SAE Application</b></span></li>
+<li class="chapter" data-level="11" data-path="selecting-data.html"><a href="selecting-data.html"><i class="fa fa-check"></i><b>11</b> Selecting Data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="selecting-data.html"><a href="selecting-data.html#survey-tab"><i class="fa fa-check"></i><b>11.1</b> Survey tab</a></li>
+<li class="chapter" data-level="11.2" data-path="selecting-data.html"><a href="selecting-data.html#census"><i class="fa fa-check"></i><b>11.2</b> Census</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="compare-data.html"><a href="compare-data.html"><i class="fa fa-check"></i><b>12</b> Compare Data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="compare-data.html"><a href="compare-data.html#correlations"><i class="fa fa-check"></i><b>12.1</b> Correlations</a></li>
+<li class="chapter" data-level="12.2" data-path="compare-data.html"><a href="compare-data.html#distributions."><i class="fa fa-check"></i><b>12.2</b> Distributions.</a></li>
+<li class="chapter" data-level="12.3" data-path="compare-data.html"><a href="compare-data.html#spatial"><i class="fa fa-check"></i><b>12.3</b> Spatial</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>13</b> Model Setup</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="model-setup.html"><a href="model-setup.html#build-the-model"><i class="fa fa-check"></i><b>13.1</b> Build the Model</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="model-setup.html"><a href="model-setup.html#stepwise-regression."><i class="fa fa-check"></i><b>13.1.1</b> Stepwise Regression.</a></li>
+<li class="chapter" data-level="13.1.2" data-path="model-setup.html"><a href="model-setup.html#random-effects"><i class="fa fa-check"></i><b>13.1.2</b> Random effects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html"><i class="fa fa-check"></i><b>14</b> Assessment of model fit</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html#assessment"><i class="fa fa-check"></i><b>14.1</b> Assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>15</b> Validation</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="validation.html"><a href="validation.html#cross-validation"><i class="fa fa-check"></i><b>15.1</b> Cross Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>16</b> Prediction</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">07 About the SAE App</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix-user-defined-r-functions" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Appendix: User-defined R functions<a href="appendix-user-defined-r-functions.html#appendix-user-defined-r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="compare_categories" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> compare_categories<a href="appendix-user-defined-r-functions.html#compare_categories" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="appendix-user-defined-r-functions.html#cb39-1" aria-hidden="true" tabindex="-1"></a>compare_categories <span class="ot">=</span> <span class="cf">function</span>(<span class="at">ipums_data =</span> <span class="cn">NULL</span>, <span class="at">ipums_var =</span> <span class="cn">NULL</span>, <span class="at">ipums_weight =</span> <span class="cn">NULL</span>,</span>
+<span id="cb39-2"><a href="appendix-user-defined-r-functions.html#cb39-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">dhs_data =</span> <span class="cn">NULL</span>, <span class="at">dhs_var =</span> <span class="cn">NULL</span>, <span class="at">dhs_weight =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb39-3"><a href="appendix-user-defined-r-functions.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This function creates a weighted frequency table for a maximum of one IPUMS </span></span>
+<span id="cb39-4"><a href="appendix-user-defined-r-functions.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># variable and one DHS variable. The purpose of this function is to easily compare</span></span>
+<span id="cb39-5"><a href="appendix-user-defined-r-functions.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the categories and frequencies of potentially harmonizable IPUMS and DHS </span></span>
+<span id="cb39-6"><a href="appendix-user-defined-r-functions.html#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># variables as a preliminary step in the harmonization process.</span></span>
+<span id="cb39-7"><a href="appendix-user-defined-r-functions.html#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb39-8"><a href="appendix-user-defined-r-functions.html#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Inputs:</span></span>
+<span id="cb39-9"><a href="appendix-user-defined-r-functions.html#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   ipums_data = Name of the IPUMS data frame (e.g., &quot;sl2015_ipums&quot;). Must be </span></span>
+<span id="cb39-10"><a href="appendix-user-defined-r-functions.html#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                 entered as a string.</span></span>
+<span id="cb39-11"><a href="appendix-user-defined-r-functions.html#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   ipums_var = Name of the variable in the IPUMS data frame for which the table</span></span>
+<span id="cb39-12"><a href="appendix-user-defined-r-functions.html#cb39-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                 is to be constructed (e.g., &quot;SL2015_MARST&quot;). Must be entered</span></span>
+<span id="cb39-13"><a href="appendix-user-defined-r-functions.html#cb39-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                 as a string.</span></span>
+<span id="cb39-14"><a href="appendix-user-defined-r-functions.html#cb39-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   ipums_weight = Name of the variable in the IPUMS data frame corresponding to </span></span>
+<span id="cb39-15"><a href="appendix-user-defined-r-functions.html#cb39-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                   the weight variable (e.g., &quot;PERWT&quot;). Must be entered as a string.</span></span>
+<span id="cb39-16"><a href="appendix-user-defined-r-functions.html#cb39-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   dhs_data = Name of the DHS data frame (e.g., &quot;sl2019_dhs_ir&quot;). Must be entered </span></span>
+<span id="cb39-17"><a href="appendix-user-defined-r-functions.html#cb39-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#               as a string.</span></span>
+<span id="cb39-18"><a href="appendix-user-defined-r-functions.html#cb39-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   dhs_var = Name of the variable in the DHS data frame for which the table is to </span></span>
+<span id="cb39-19"><a href="appendix-user-defined-r-functions.html#cb39-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#               be constructed (e.g., &quot;V501&quot;). Must be entered as a string.</span></span>
+<span id="cb39-20"><a href="appendix-user-defined-r-functions.html#cb39-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   dhs_weight = Name of the variable in the IPUMS data frame corresponding to the </span></span>
+<span id="cb39-21"><a href="appendix-user-defined-r-functions.html#cb39-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                 weight variable (e.g., &quot;V005R&quot;). Must be entered as a string.</span></span>
+<span id="cb39-22"><a href="appendix-user-defined-r-functions.html#cb39-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb39-23"><a href="appendix-user-defined-r-functions.html#cb39-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Prints:</span></span>
+<span id="cb39-24"><a href="appendix-user-defined-r-functions.html#cb39-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   Two tables of weighted counts and percents: One for ipums_var, and one for dhs_var.</span></span>
+<span id="cb39-25"><a href="appendix-user-defined-r-functions.html#cb39-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb39-26"><a href="appendix-user-defined-r-functions.html#cb39-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-27"><a href="appendix-user-defined-r-functions.html#cb39-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-28"><a href="appendix-user-defined-r-functions.html#cb39-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">any</span>(<span class="fu">is.null</span>(ipums_data), <span class="fu">is.null</span>(ipums_var), <span class="fu">is.null</span>(ipums_weight))) {</span>
+<span id="cb39-29"><a href="appendix-user-defined-r-functions.html#cb39-29" aria-hidden="true" tabindex="-1"></a>    IPUMS <span class="ot">=</span> <span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text =</span> <span class="fu">noquote</span>(<span class="fu">paste0</span>(ipums_data, <span class="st">&quot;$&quot;</span>, ipums_var))))</span>
+<span id="cb39-30"><a href="appendix-user-defined-r-functions.html#cb39-30" aria-hidden="true" tabindex="-1"></a>    weight_ipums <span class="ot">=</span> <span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text =</span> <span class="fu">noquote</span>(<span class="fu">paste0</span>(ipums_data, <span class="st">&quot;$&quot;</span>, ipums_weight))))</span>
+<span id="cb39-31"><a href="appendix-user-defined-r-functions.html#cb39-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb39-32"><a href="appendix-user-defined-r-functions.html#cb39-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">noquote</span>(<span class="fu">paste0</span>(<span class="st">&quot;IPUMS weighted frequency table for &quot;</span>, ipums_var, <span class="st">&quot;:&quot;</span>)))</span>
+<span id="cb39-33"><a href="appendix-user-defined-r-functions.html#cb39-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">fre</span>(IPUMS, <span class="at">weight =</span> weight_ipums)[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">4</span>)])</span>
+<span id="cb39-34"><a href="appendix-user-defined-r-functions.html#cb39-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb39-35"><a href="appendix-user-defined-r-functions.html#cb39-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n\n\n</span><span class="st">&quot;</span>)</span>
+<span id="cb39-36"><a href="appendix-user-defined-r-functions.html#cb39-36" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-37"><a href="appendix-user-defined-r-functions.html#cb39-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb39-38"><a href="appendix-user-defined-r-functions.html#cb39-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">any</span>(<span class="fu">is.null</span>(dhs_data), <span class="fu">is.null</span>(dhs_var), <span class="fu">is.null</span>(dhs_weight))) {</span>
+<span id="cb39-39"><a href="appendix-user-defined-r-functions.html#cb39-39" aria-hidden="true" tabindex="-1"></a>    DHS <span class="ot">=</span> <span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text =</span> <span class="fu">noquote</span>(<span class="fu">paste0</span>(dhs_data, <span class="st">&quot;$&quot;</span>, dhs_var))))</span>
+<span id="cb39-40"><a href="appendix-user-defined-r-functions.html#cb39-40" aria-hidden="true" tabindex="-1"></a>    weight_dhs <span class="ot">=</span> <span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text =</span> <span class="fu">noquote</span>(<span class="fu">paste0</span>(dhs_data, <span class="st">&quot;$&quot;</span>, dhs_weight))))</span>
+<span id="cb39-41"><a href="appendix-user-defined-r-functions.html#cb39-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb39-42"><a href="appendix-user-defined-r-functions.html#cb39-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">noquote</span>(<span class="fu">paste0</span>(<span class="st">&quot;DHS weighted frequency table for &quot;</span>, dhs_var, <span class="st">&quot;:&quot;</span>)))</span>
+<span id="cb39-43"><a href="appendix-user-defined-r-functions.html#cb39-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">fre</span>(DHS, <span class="at">weight =</span> weight_dhs)[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">4</span>)])</span>
+<span id="cb39-44"><a href="appendix-user-defined-r-functions.html#cb39-44" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-45"><a href="appendix-user-defined-r-functions.html#cb39-45" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="new_var_label" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> new_var_label<a href="appendix-user-defined-r-functions.html#new_var_label" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="appendix-user-defined-r-functions.html#cb40-1" aria-hidden="true" tabindex="-1"></a>new_var_label <span class="ot">=</span> <span class="cf">function</span>(dataframe, label) {</span>
+<span id="cb40-2"><a href="appendix-user-defined-r-functions.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This function appends a variable label to a data frame.</span></span>
+<span id="cb40-3"><a href="appendix-user-defined-r-functions.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb40-4"><a href="appendix-user-defined-r-functions.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Inputs:</span></span>
+<span id="cb40-5"><a href="appendix-user-defined-r-functions.html#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   dataframe = The data frame to which the user would like to append a variable label.</span></span>
+<span id="cb40-6"><a href="appendix-user-defined-r-functions.html#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   label = Variable label that the user would like to append to the data frame. Must be</span></span>
+<span id="cb40-7"><a href="appendix-user-defined-r-functions.html#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#           a string of characters; otherwise, the function will return an error message.</span></span>
+<span id="cb40-8"><a href="appendix-user-defined-r-functions.html#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb40-9"><a href="appendix-user-defined-r-functions.html#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Returns:</span></span>
+<span id="cb40-10"><a href="appendix-user-defined-r-functions.html#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   An updated version of the dataframe that includes the new variable label.</span></span>
+<span id="cb40-11"><a href="appendix-user-defined-r-functions.html#cb40-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb40-12"><a href="appendix-user-defined-r-functions.html#cb40-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-13"><a href="appendix-user-defined-r-functions.html#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">attr</span>(dataframe, <span class="st">&quot;variable.labels&quot;</span>) <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">attr</span>(dataframe, <span class="st">&quot;variable.labels&quot;</span>), label)</span>
+<span id="cb40-14"><a href="appendix-user-defined-r-functions.html#cb40-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-15"><a href="appendix-user-defined-r-functions.html#cb40-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(dataframe)</span>
+<span id="cb40-16"><a href="appendix-user-defined-r-functions.html#cb40-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="write_ipums_output" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> write_ipums_output<a href="appendix-user-defined-r-functions.html#write_ipums_output" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="appendix-user-defined-r-functions.html#cb41-1" aria-hidden="true" tabindex="-1"></a>write_ipums_output <span class="ot">=</span> <span class="cf">function</span>(workbook_name, sheet_name, ipums_data, ipums_var_names, </span>
+<span id="cb41-2"><a href="appendix-user-defined-r-functions.html#cb41-2" aria-hidden="true" tabindex="-1"></a>                              ipums_freq_tables, <span class="at">output_start_row =</span> <span class="dv">1</span>) {</span>
+<span id="cb41-3"><a href="appendix-user-defined-r-functions.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This function writes the IPUMS harmonization output to an excel workbook.</span></span>
+<span id="cb41-4"><a href="appendix-user-defined-r-functions.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb41-5"><a href="appendix-user-defined-r-functions.html#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Inputs:</span></span>
+<span id="cb41-6"><a href="appendix-user-defined-r-functions.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   workbook_name = Name of the object that identifies the excel workbook in which the output </span></span>
+<span id="cb41-7"><a href="appendix-user-defined-r-functions.html#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                   is being stored.</span></span>
+<span id="cb41-8"><a href="appendix-user-defined-r-functions.html#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   sheet_name = Name of the sheet within workbook_name to which the output should be written.</span></span>
+<span id="cb41-9"><a href="appendix-user-defined-r-functions.html#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   ipums_data = Name of the IPUMS dataset.</span></span>
+<span id="cb41-10"><a href="appendix-user-defined-r-functions.html#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   ipums_var_names = Vector of IPUMS variable names indicating the variables that are to be </span></span>
+<span id="cb41-11"><a href="appendix-user-defined-r-functions.html#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                     written to sheet_name. Must be the same length as ipums_freq_tables, </span></span>
+<span id="cb41-12"><a href="appendix-user-defined-r-functions.html#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                     otherwise the function returns an error message. Must also have a length </span></span>
+<span id="cb41-13"><a href="appendix-user-defined-r-functions.html#cb41-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                     of no more than 3, otherwise the function returns an error message.</span></span>
+<span id="cb41-14"><a href="appendix-user-defined-r-functions.html#cb41-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   ipums_freq_tables = List of data frames corresponding to the variables listed in ipums_var_names.</span></span>
+<span id="cb41-15"><a href="appendix-user-defined-r-functions.html#cb41-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                       Must be the same length as ipums_var_names, otherwise the function returns </span></span>
+<span id="cb41-16"><a href="appendix-user-defined-r-functions.html#cb41-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                       an error message. Must also have a length of no more than 3, otherwise the </span></span>
+<span id="cb41-17"><a href="appendix-user-defined-r-functions.html#cb41-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                       function returns an error message.</span></span>
+<span id="cb41-18"><a href="appendix-user-defined-r-functions.html#cb41-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb41-19"><a href="appendix-user-defined-r-functions.html#cb41-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Returns:</span></span>
+<span id="cb41-20"><a href="appendix-user-defined-r-functions.html#cb41-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   Nothing. The function prints the output to the excel sheet/workbook, as specified by the user.</span></span>
+<span id="cb41-21"><a href="appendix-user-defined-r-functions.html#cb41-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb41-22"><a href="appendix-user-defined-r-functions.html#cb41-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-23"><a href="appendix-user-defined-r-functions.html#cb41-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(ipums_var_names) <span class="sc">!=</span> <span class="fu">length</span>(ipums_freq_tables)) {</span>
+<span id="cb41-24"><a href="appendix-user-defined-r-functions.html#cb41-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Error: ipums_var_names must be the same length as ipums_freq_tables.&quot;</span>)</span>
+<span id="cb41-25"><a href="appendix-user-defined-r-functions.html#cb41-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb41-26"><a href="appendix-user-defined-r-functions.html#cb41-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-27"><a href="appendix-user-defined-r-functions.html#cb41-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(ipums_var_names) <span class="sc">&gt;</span> <span class="dv">3</span>) {</span>
+<span id="cb41-28"><a href="appendix-user-defined-r-functions.html#cb41-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Error: ipums_var_names and ipums_freq_tables must have lengths of no more than 3.&quot;</span>)</span>
+<span id="cb41-29"><a href="appendix-user-defined-r-functions.html#cb41-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb41-30"><a href="appendix-user-defined-r-functions.html#cb41-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-31"><a href="appendix-user-defined-r-functions.html#cb41-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(ipums_var_names)) {</span>
+<span id="cb41-32"><a href="appendix-user-defined-r-functions.html#cb41-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb41-33"><a href="appendix-user-defined-r-functions.html#cb41-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> output_start_row, <span class="st">&quot;IPUMS 2015&quot;</span>)</span>
+<span id="cb41-34"><a href="appendix-user-defined-r-functions.html#cb41-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> output_start_row <span class="sc">+</span> <span class="dv">1</span>,</span>
+<span id="cb41-35"><a href="appendix-user-defined-r-functions.html#cb41-35" aria-hidden="true" tabindex="-1"></a>                <span class="fu">attr</span>(ipums_data, <span class="st">&quot;variable.labels&quot;</span>)[<span class="fu">which</span>(<span class="fu">attr</span>(ipums_data, <span class="st">&quot;names&quot;</span>) <span class="sc">==</span> </span>
+<span id="cb41-36"><a href="appendix-user-defined-r-functions.html#cb41-36" aria-hidden="true" tabindex="-1"></a>                                                            ipums_var_names[i])])</span>
+<span id="cb41-37"><a href="appendix-user-defined-r-functions.html#cb41-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> output_start_row <span class="sc">+</span> <span class="dv">3</span>,</span>
+<span id="cb41-38"><a href="appendix-user-defined-r-functions.html#cb41-38" aria-hidden="true" tabindex="-1"></a>                <span class="fu">cbind</span>(ipums_freq_tables[[i]][,<span class="dv">1</span>], <span class="fu">round</span>(ipums_freq_tables[[i]][,<span class="dv">2</span>], <span class="dv">0</span>), </span>
+<span id="cb41-39"><a href="appendix-user-defined-r-functions.html#cb41-39" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">round</span>(ipums_freq_tables[[i]][,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], <span class="dv">2</span>)))</span>
+<span id="cb41-40"><a href="appendix-user-defined-r-functions.html#cb41-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb41-41"><a href="appendix-user-defined-r-functions.html#cb41-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb41-42"><a href="appendix-user-defined-r-functions.html#cb41-42" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> <span class="fu">nrow</span>(ipums_freq_tables[[i <span class="sc">-</span> <span class="dv">1</span>]]) <span class="sc">+</span> </span>
+<span id="cb41-43"><a href="appendix-user-defined-r-functions.html#cb41-43" aria-hidden="true" tabindex="-1"></a>                  (output_start_row <span class="sc">+</span> <span class="dv">7</span>),</span>
+<span id="cb41-44"><a href="appendix-user-defined-r-functions.html#cb41-44" aria-hidden="true" tabindex="-1"></a>                <span class="fu">attr</span>(ipums_data, <span class="st">&quot;variable.labels&quot;</span>)[<span class="fu">which</span>(<span class="fu">attr</span>(ipums_data, <span class="st">&quot;names&quot;</span>) <span class="sc">==</span> </span>
+<span id="cb41-45"><a href="appendix-user-defined-r-functions.html#cb41-45" aria-hidden="true" tabindex="-1"></a>                                                            ipums_var_names[i])])</span>
+<span id="cb41-46"><a href="appendix-user-defined-r-functions.html#cb41-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> <span class="fu">nrow</span>(ipums_freq_tables[[i <span class="sc">-</span> <span class="dv">1</span>]]) <span class="sc">+</span> </span>
+<span id="cb41-47"><a href="appendix-user-defined-r-functions.html#cb41-47" aria-hidden="true" tabindex="-1"></a>                  (output_start_row <span class="sc">+</span> <span class="dv">9</span>),</span>
+<span id="cb41-48"><a href="appendix-user-defined-r-functions.html#cb41-48" aria-hidden="true" tabindex="-1"></a>                <span class="fu">cbind</span>(ipums_freq_tables[[i]][,<span class="dv">1</span>], <span class="fu">round</span>(ipums_freq_tables[[i]][,<span class="dv">2</span>], <span class="dv">0</span>), </span>
+<span id="cb41-49"><a href="appendix-user-defined-r-functions.html#cb41-49" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">round</span>(ipums_freq_tables[[i]][,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], <span class="dv">2</span>)))</span>
+<span id="cb41-50"><a href="appendix-user-defined-r-functions.html#cb41-50" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb41-51"><a href="appendix-user-defined-r-functions.html#cb41-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">3</span>) {</span>
+<span id="cb41-52"><a href="appendix-user-defined-r-functions.html#cb41-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> <span class="fu">nrow</span>(ipums_freq_tables[[i <span class="sc">-</span> <span class="dv">2</span>]]) <span class="sc">+</span> </span>
+<span id="cb41-53"><a href="appendix-user-defined-r-functions.html#cb41-53" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">nrow</span>(ipums_freq_tables[[i <span class="sc">-</span> <span class="dv">1</span>]]) <span class="sc">+</span> (output_start_row <span class="sc">+</span> <span class="dv">13</span>),</span>
+<span id="cb41-54"><a href="appendix-user-defined-r-functions.html#cb41-54" aria-hidden="true" tabindex="-1"></a>                <span class="fu">attr</span>(ipums_data, <span class="st">&quot;variable.labels&quot;</span>)[<span class="fu">which</span>(<span class="fu">attr</span>(ipums_data, <span class="st">&quot;names&quot;</span>) <span class="sc">==</span> </span>
+<span id="cb41-55"><a href="appendix-user-defined-r-functions.html#cb41-55" aria-hidden="true" tabindex="-1"></a>                                                            ipums_var_names[i])])</span>
+<span id="cb41-56"><a href="appendix-user-defined-r-functions.html#cb41-56" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> <span class="fu">nrow</span>(ipums_freq_tables[[i <span class="sc">-</span> <span class="dv">2</span>]]) <span class="sc">+</span> </span>
+<span id="cb41-57"><a href="appendix-user-defined-r-functions.html#cb41-57" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">nrow</span>(ipums_freq_tables[[i <span class="sc">-</span> <span class="dv">1</span>]]) <span class="sc">+</span> (output_start_row <span class="sc">+</span> <span class="dv">15</span>),</span>
+<span id="cb41-58"><a href="appendix-user-defined-r-functions.html#cb41-58" aria-hidden="true" tabindex="-1"></a>                <span class="fu">cbind</span>(ipums_freq_tables[[i]][,<span class="dv">1</span>], <span class="fu">round</span>(ipums_freq_tables[[i]][,<span class="dv">2</span>], <span class="dv">0</span>), </span>
+<span id="cb41-59"><a href="appendix-user-defined-r-functions.html#cb41-59" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">round</span>(ipums_freq_tables[[i]][,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], <span class="dv">2</span>)))</span>
+<span id="cb41-60"><a href="appendix-user-defined-r-functions.html#cb41-60" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb41-61"><a href="appendix-user-defined-r-functions.html#cb41-61" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb41-62"><a href="appendix-user-defined-r-functions.html#cb41-62" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="write_dhs_output" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> write_dhs_output<a href="appendix-user-defined-r-functions.html#write_dhs_output" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="appendix-user-defined-r-functions.html#cb42-1" aria-hidden="true" tabindex="-1"></a>write_dhs_output <span class="ot">=</span> <span class="cf">function</span>(workbook_name, sheet_name, dhs_data, dhs_var_names, </span>
+<span id="cb42-2"><a href="appendix-user-defined-r-functions.html#cb42-2" aria-hidden="true" tabindex="-1"></a>                            dhs_freq_tables, <span class="at">output_start_row =</span> <span class="dv">1</span>) {</span>
+<span id="cb42-3"><a href="appendix-user-defined-r-functions.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This function writes the DHS harmonization output to an excel workbook.</span></span>
+<span id="cb42-4"><a href="appendix-user-defined-r-functions.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb42-5"><a href="appendix-user-defined-r-functions.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Inputs:</span></span>
+<span id="cb42-6"><a href="appendix-user-defined-r-functions.html#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   workbook_name = Name of the object that identifies the excel workbook in which the output </span></span>
+<span id="cb42-7"><a href="appendix-user-defined-r-functions.html#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                   is being stored.</span></span>
+<span id="cb42-8"><a href="appendix-user-defined-r-functions.html#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   sheet_name = Name of the sheet within workbook_name to which the output should be written.</span></span>
+<span id="cb42-9"><a href="appendix-user-defined-r-functions.html#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   dhs_data = Name of the DHS dataset.</span></span>
+<span id="cb42-10"><a href="appendix-user-defined-r-functions.html#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   dhs_var_names = Vector of DHS variable names indicating the variables that are to be </span></span>
+<span id="cb42-11"><a href="appendix-user-defined-r-functions.html#cb42-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                   written to sheet_name. Must be the same length as dhs_freq_tables, otherwise </span></span>
+<span id="cb42-12"><a href="appendix-user-defined-r-functions.html#cb42-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                   the function returns an error message. Must also have a length of no more </span></span>
+<span id="cb42-13"><a href="appendix-user-defined-r-functions.html#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                   than 3, otherwise the function returns an error message.</span></span>
+<span id="cb42-14"><a href="appendix-user-defined-r-functions.html#cb42-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   dhs_freq_tables = List of data frames corresponding to the variables listed in dhs_var_names. </span></span>
+<span id="cb42-15"><a href="appendix-user-defined-r-functions.html#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                     Must be the same length as dhs_var_names, otherwise the function returns an </span></span>
+<span id="cb42-16"><a href="appendix-user-defined-r-functions.html#cb42-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                     error message. Must also have a length of no more than 3, otherwise the </span></span>
+<span id="cb42-17"><a href="appendix-user-defined-r-functions.html#cb42-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                     function returns an error message.</span></span>
+<span id="cb42-18"><a href="appendix-user-defined-r-functions.html#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb42-19"><a href="appendix-user-defined-r-functions.html#cb42-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Returns:</span></span>
+<span id="cb42-20"><a href="appendix-user-defined-r-functions.html#cb42-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">#   Nothing. The function prints the output to the excel sheet/workbook, as specified by the user.</span></span>
+<span id="cb42-21"><a href="appendix-user-defined-r-functions.html#cb42-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb42-22"><a href="appendix-user-defined-r-functions.html#cb42-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-23"><a href="appendix-user-defined-r-functions.html#cb42-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(dhs_var_names) <span class="sc">!=</span> <span class="fu">length</span>(dhs_freq_tables)) {</span>
+<span id="cb42-24"><a href="appendix-user-defined-r-functions.html#cb42-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Error: dhs_var_names must be the same length as dhs_freq_tables.&quot;</span>)</span>
+<span id="cb42-25"><a href="appendix-user-defined-r-functions.html#cb42-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb42-26"><a href="appendix-user-defined-r-functions.html#cb42-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-27"><a href="appendix-user-defined-r-functions.html#cb42-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(dhs_var_names) <span class="sc">&gt;</span> <span class="dv">3</span>) {</span>
+<span id="cb42-28"><a href="appendix-user-defined-r-functions.html#cb42-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Error: dhs_var_names and dhs_freq_tables must have lengths of no more than 3.&quot;</span>)</span>
+<span id="cb42-29"><a href="appendix-user-defined-r-functions.html#cb42-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb42-30"><a href="appendix-user-defined-r-functions.html#cb42-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-31"><a href="appendix-user-defined-r-functions.html#cb42-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-32"><a href="appendix-user-defined-r-functions.html#cb42-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dhs_var_names)) {</span>
+<span id="cb42-33"><a href="appendix-user-defined-r-functions.html#cb42-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb42-34"><a href="appendix-user-defined-r-functions.html#cb42-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> output_start_row, <span class="at">startCol =</span> <span class="dv">10</span>, </span>
+<span id="cb42-35"><a href="appendix-user-defined-r-functions.html#cb42-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;DHS 2019&quot;</span>)</span>
+<span id="cb42-36"><a href="appendix-user-defined-r-functions.html#cb42-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> output_start_row <span class="sc">+</span> <span class="dv">1</span>, <span class="at">startCol =</span> <span class="dv">10</span>,</span>
+<span id="cb42-37"><a href="appendix-user-defined-r-functions.html#cb42-37" aria-hidden="true" tabindex="-1"></a>                <span class="fu">attr</span>(dhs_data, <span class="st">&quot;variable.labels&quot;</span>)[<span class="fu">which</span>(<span class="fu">attr</span>(dhs_data, <span class="st">&quot;names&quot;</span>) <span class="sc">==</span> </span>
+<span id="cb42-38"><a href="appendix-user-defined-r-functions.html#cb42-38" aria-hidden="true" tabindex="-1"></a>                                                          dhs_var_names[i])])</span>
+<span id="cb42-39"><a href="appendix-user-defined-r-functions.html#cb42-39" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> output_start_row <span class="sc">+</span> <span class="dv">3</span>, <span class="at">startCol =</span> <span class="dv">10</span>,</span>
+<span id="cb42-40"><a href="appendix-user-defined-r-functions.html#cb42-40" aria-hidden="true" tabindex="-1"></a>                <span class="fu">cbind</span>(dhs_freq_tables[[i]][,<span class="dv">1</span>], <span class="fu">round</span>(dhs_freq_tables[[i]][,<span class="dv">2</span>], <span class="dv">0</span>), </span>
+<span id="cb42-41"><a href="appendix-user-defined-r-functions.html#cb42-41" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">round</span>(dhs_freq_tables[[i]][,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], <span class="dv">2</span>)))</span>
+<span id="cb42-42"><a href="appendix-user-defined-r-functions.html#cb42-42" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb42-43"><a href="appendix-user-defined-r-functions.html#cb42-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">2</span>) {</span>
+<span id="cb42-44"><a href="appendix-user-defined-r-functions.html#cb42-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> <span class="fu">nrow</span>(dhs_freq_tables[[i <span class="sc">-</span> <span class="dv">1</span>]]) <span class="sc">+</span> </span>
+<span id="cb42-45"><a href="appendix-user-defined-r-functions.html#cb42-45" aria-hidden="true" tabindex="-1"></a>                  (output_start_row <span class="sc">+</span> <span class="dv">7</span>), <span class="at">startCol =</span> <span class="dv">10</span>,</span>
+<span id="cb42-46"><a href="appendix-user-defined-r-functions.html#cb42-46" aria-hidden="true" tabindex="-1"></a>                <span class="fu">attr</span>(dhs_data, <span class="st">&quot;variable.labels&quot;</span>)[<span class="fu">which</span>(<span class="fu">attr</span>(dhs_data, <span class="st">&quot;names&quot;</span>) <span class="sc">==</span> </span>
+<span id="cb42-47"><a href="appendix-user-defined-r-functions.html#cb42-47" aria-hidden="true" tabindex="-1"></a>                                                          dhs_var_names[i])])</span>
+<span id="cb42-48"><a href="appendix-user-defined-r-functions.html#cb42-48" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> <span class="fu">nrow</span>(dhs_freq_tables[[i <span class="sc">-</span> <span class="dv">1</span>]]) <span class="sc">+</span> </span>
+<span id="cb42-49"><a href="appendix-user-defined-r-functions.html#cb42-49" aria-hidden="true" tabindex="-1"></a>                  (output_start_row <span class="sc">+</span> <span class="dv">9</span>), <span class="at">startCol =</span> <span class="dv">10</span>,</span>
+<span id="cb42-50"><a href="appendix-user-defined-r-functions.html#cb42-50" aria-hidden="true" tabindex="-1"></a>                <span class="fu">cbind</span>(dhs_freq_tables[[i]][,<span class="dv">1</span>], <span class="fu">round</span>(dhs_freq_tables[[i]][,<span class="dv">2</span>], <span class="dv">0</span>), </span>
+<span id="cb42-51"><a href="appendix-user-defined-r-functions.html#cb42-51" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">round</span>(dhs_freq_tables[[i]][,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], <span class="dv">2</span>)))</span>
+<span id="cb42-52"><a href="appendix-user-defined-r-functions.html#cb42-52" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb42-53"><a href="appendix-user-defined-r-functions.html#cb42-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">3</span>) {</span>
+<span id="cb42-54"><a href="appendix-user-defined-r-functions.html#cb42-54" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> <span class="fu">nrow</span>(dhs_freq_tables[[i <span class="sc">-</span> <span class="dv">2</span>]]) <span class="sc">+</span> </span>
+<span id="cb42-55"><a href="appendix-user-defined-r-functions.html#cb42-55" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">nrow</span>(dhs_freq_tables[[i <span class="sc">-</span> <span class="dv">1</span>]]) <span class="sc">+</span> (output_start_row <span class="sc">+</span> <span class="dv">13</span>), <span class="at">startCol =</span> <span class="dv">10</span>,</span>
+<span id="cb42-56"><a href="appendix-user-defined-r-functions.html#cb42-56" aria-hidden="true" tabindex="-1"></a>                <span class="fu">attr</span>(dhs_data, <span class="st">&quot;variable.labels&quot;</span>)[<span class="fu">which</span>(<span class="fu">attr</span>(dhs_data, <span class="st">&quot;names&quot;</span>) <span class="sc">==</span> </span>
+<span id="cb42-57"><a href="appendix-user-defined-r-functions.html#cb42-57" aria-hidden="true" tabindex="-1"></a>                                                          dhs_var_names[i])])</span>
+<span id="cb42-58"><a href="appendix-user-defined-r-functions.html#cb42-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">writeData</span>(workbook_name, <span class="at">sheet =</span> sheet_name, <span class="at">startRow =</span> <span class="fu">nrow</span>(dhs_freq_tables[[i <span class="sc">-</span> <span class="dv">2</span>]]) <span class="sc">+</span> </span>
+<span id="cb42-59"><a href="appendix-user-defined-r-functions.html#cb42-59" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">nrow</span>(dhs_freq_tables[[i <span class="sc">-</span> <span class="dv">1</span>]]) <span class="sc">+</span> (output_start_row <span class="sc">+</span> <span class="dv">15</span>), <span class="at">startCol =</span> <span class="dv">10</span>,</span>
+<span id="cb42-60"><a href="appendix-user-defined-r-functions.html#cb42-60" aria-hidden="true" tabindex="-1"></a>                <span class="fu">cbind</span>(dhs_freq_tables[[i]][,<span class="dv">1</span>], <span class="fu">round</span>(dhs_freq_tables[[i]][,<span class="dv">2</span>], <span class="dv">0</span>), </span>
+<span id="cb42-61"><a href="appendix-user-defined-r-functions.html#cb42-61" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">round</span>(dhs_freq_tables[[i]][,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], <span class="dv">2</span>)))</span>
+<span id="cb42-62"><a href="appendix-user-defined-r-functions.html#cb42-62" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb42-63"><a href="appendix-user-defined-r-functions.html#cb42-63" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb42-64"><a href="appendix-user-defined-r-functions.html#cb42-64" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="step-4-variable-harmonization-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="about-the-application.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-Functions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+
+
+# Prediction
+Now that we have assessed the model, we can use it to predict into the census data using the same predictor variables.  The predictions tab does this,  plotting the predictions at census scale, then survey region scale, then finally with direct estimates.  In the tabular data section,  the predictions are aggregated at both survey and census scales. A bootstrapped 95% confidence interval is also calculated for each region.
+  
+
+![Tabular results](img//Tab6_Prediction.png)

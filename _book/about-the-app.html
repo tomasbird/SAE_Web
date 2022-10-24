@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 About the App | 05 Prediction</title>
+  <meta name="description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 About the App | 05 Prediction" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 About the App | 05 Prediction" />
+  
+  <meta name="twitter:description" content="This eBook provides an introduction to the UNFPA small area estimation tools" />
+  
+
+<meta name="author" content="Tom Bird" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="step-4-variable-harmonization-1.html"/>
+<link rel="next" href="selecting-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Small Area Estimation Tools</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
+<li class="part"><span><b>II Harmonization</b></span></li>
+<li class="chapter" data-level="2" data-path="harmonization.html"><a href="harmonization.html"><i class="fa fa-check"></i><b>2</b> Harmonization</a></li>
+<li class="chapter" data-level="3" data-path="step-1-download-data.html"><a href="step-1-download-data.html"><i class="fa fa-check"></i><b>3</b> Step 1: Download data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="step-1-download-data.html"><a href="step-1-download-data.html#step-1a-ipums-data-and-shapefiles"><i class="fa fa-check"></i><b>3.1</b> Step 1A: IPUMS data and shapefiles</a></li>
+<li class="chapter" data-level="3.2" data-path="step-1-download-data.html"><a href="step-1-download-data.html#step-1b-dhs-data-and-shapefiles"><i class="fa fa-check"></i><b>3.2</b> Step 1B: DHS data and shapefiles</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html"><i class="fa fa-check"></i><b>4</b> Step 2: SAE preliminaries</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2a-identify-dhs-indicators-of-interest"><i class="fa fa-check"></i><b>4.1</b> Step 2A: Identify DHS indicators of interest</a></li>
+<li class="chapter" data-level="4.2" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2b-identify-variables-to-harmonize"><i class="fa fa-check"></i><b>4.2</b> Step 2B: Identify variables to harmonize</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2-sae-preliminaries.html"><a href="step-2-sae-preliminaries.html#step-2c-determine-target-population"><i class="fa fa-check"></i><b>4.3</b> Step 2C: Determine target population</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html"><i class="fa fa-check"></i><b>5</b> Step 3: Data preparation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3a-packages-and-user-defined-functions"><i class="fa fa-check"></i><b>5.1</b> Step 3A: Packages and user-defined functions</a></li>
+<li class="chapter" data-level="5.2" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3b-ipums-data-preparation"><i class="fa fa-check"></i><b>5.2</b> Step 3B: IPUMS data preparation</a></li>
+<li class="chapter" data-level="5.3" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3c-dhs-data-preparation"><i class="fa fa-check"></i><b>5.3</b> Step 3C: DHS data preparation</a></li>
+<li class="chapter" data-level="5.4" data-path="step-3-data-preparation.html"><a href="step-3-data-preparation.html#step-3d-create-supporting-files"><i class="fa fa-check"></i><b>5.4</b> Step 3D: Create supporting files</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html"><i class="fa fa-check"></i><b>6</b> Step 4: Variable harmonization</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4a-category-alignment"><i class="fa fa-check"></i><b>6.1</b> Step 4A: Category alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4b-create-harmonized-ipums-and-dhs-variables"><i class="fa fa-check"></i><b>6.2</b> Step 4B: Create harmonized IPUMS and DHS variables</a></li>
+<li class="chapter" data-level="6.3" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4c-write-harmonization-output-to-excel"><i class="fa fa-check"></i><b>6.3</b> Step 4C: Write harmonization output to Excel</a></li>
+<li class="chapter" data-level="6.4" data-path="step-4-variable-harmonization.html"><a href="step-4-variable-harmonization.html#step-4d-miscellaneous-notes"><i class="fa fa-check"></i><b>6.4</b> Step 4D: Miscellaneous notes</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html"><i class="fa fa-check"></i><b>7</b> Step 5: Create harmonized data files</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html#step-5a-create-harmonized-ipums-data-set"><i class="fa fa-check"></i><b>7.1</b> Step 5A: Create harmonized IPUMS data set</a></li>
+<li class="chapter" data-level="7.2" data-path="step-5-create-harmonized-data-files.html"><a href="step-5-create-harmonized-data-files.html#step-5b-create-harmonized-dhs-data-set"><i class="fa fa-check"></i><b>7.2</b> Step 5B: Create harmonized DHS data set</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html"><i class="fa fa-check"></i><b>8</b> Step 4: Variable harmonization</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4a-category-alignment-1"><i class="fa fa-check"></i><b>8.1</b> Step 4A: Category alignment</a></li>
+<li class="chapter" data-level="8.2" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4b-create-harmonized-ipums-and-dhs-variables-1"><i class="fa fa-check"></i><b>8.2</b> Step 4B: Create harmonized IPUMS and DHS variables</a></li>
+<li class="chapter" data-level="8.3" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#step-4c-write-harmonization-output-to-excel-1"><i class="fa fa-check"></i><b>8.3</b> Step 4C: Write harmonization output to Excel</a></li>
+<li class="chapter" data-level="8.4" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#compare_categories"><i class="fa fa-check"></i><b>8.4</b> compare_categories</a></li>
+<li class="chapter" data-level="8.5" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#new_var_label"><i class="fa fa-check"></i><b>8.5</b> new_var_label</a></li>
+<li class="chapter" data-level="8.6" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#write_ipums_output"><i class="fa fa-check"></i><b>8.6</b> write_ipums_output</a></li>
+<li class="chapter" data-level="8.7" data-path="step-4-variable-harmonization-1.html"><a href="step-4-variable-harmonization-1.html#write_dhs_output"><i class="fa fa-check"></i><b>8.7</b> write_dhs_output</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="about-the-app.html"><a href="about-the-app.html"><i class="fa fa-check"></i><b>9</b> About the App</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="about-the-app.html"><a href="about-the-app.html#how-to-navigate-the-application"><i class="fa fa-check"></i><b>9.1</b> How to navigate the application</a></li>
+<li class="chapter" data-level="9.2" data-path="about-the-app.html"><a href="about-the-app.html#landing-page"><i class="fa fa-check"></i><b>9.2</b> Landing Page</a></li>
+</ul></li>
+<li class="part"><span><b>III SAE Application</b></span></li>
+<li class="chapter" data-level="10" data-path="selecting-data.html"><a href="selecting-data.html"><i class="fa fa-check"></i><b>10</b> Selecting Data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="selecting-data.html"><a href="selecting-data.html#survey-tab"><i class="fa fa-check"></i><b>10.1</b> Survey tab</a></li>
+<li class="chapter" data-level="10.2" data-path="selecting-data.html"><a href="selecting-data.html#census"><i class="fa fa-check"></i><b>10.2</b> Census</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="compare-data.html"><a href="compare-data.html"><i class="fa fa-check"></i><b>11</b> Compare Data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="compare-data.html"><a href="compare-data.html#correlations"><i class="fa fa-check"></i><b>11.1</b> Correlations</a></li>
+<li class="chapter" data-level="11.2" data-path="compare-data.html"><a href="compare-data.html#distributions."><i class="fa fa-check"></i><b>11.2</b> Distributions.</a></li>
+<li class="chapter" data-level="11.3" data-path="compare-data.html"><a href="compare-data.html#spatial"><i class="fa fa-check"></i><b>11.3</b> Spatial</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>12</b> Model Setup</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="model-setup.html"><a href="model-setup.html#parameter-tests"><i class="fa fa-check"></i><b>12.1</b> Parameter Tests</a></li>
+<li class="chapter" data-level="12.2" data-path="model-setup.html"><a href="model-setup.html#build-the-model"><i class="fa fa-check"></i><b>12.2</b> Build the Model</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="model-setup.html"><a href="model-setup.html#stepwise-regression."><i class="fa fa-check"></i><b>12.2.1</b> Stepwise Regression.</a></li>
+<li class="chapter" data-level="12.2.2" data-path="model-setup.html"><a href="model-setup.html#random-effects"><i class="fa fa-check"></i><b>12.2.2</b> Random effects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html"><i class="fa fa-check"></i><b>13</b> Assessment of model fit</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html#assessment"><i class="fa fa-check"></i><b>13.1</b> Assessment</a></li>
+<li class="chapter" data-level="13.2" data-path="assessment-of-model-fit.html"><a href="assessment-of-model-fit.html#cross-validation"><i class="fa fa-check"></i><b>13.2</b> Cross Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>14</b> Prediction</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">05 Prediction</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="about-the-app" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> About the App<a href="about-the-app.html#about-the-app" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The UNFPA’s Small Area Estimation App is a freely-available user-friendly tool that allows a novice user to automatically build small area estimation models, view the results and create predictions.</p>
+<div id="how-to-navigate-the-application" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> How to navigate the application<a href="about-the-app.html#how-to-navigate-the-application" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The application consists of different tabs for each stage of the analysis. These include selecting and comparing data, Setup of the models, model assessment and finally prediction. Under each tab, simple directions allow the user to control outputs and download results. Note that the contents of each tab depend on the previous tab results, so errors in data setup will propogate through the application and may result in error messages instead of expected results.</p>
+</div>
+<div id="landing-page" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Landing Page<a href="about-the-app.html#landing-page" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The landing page provides the gateway to the application features. Use the tabs at the top of the page to access different parts of the application.</p>
+<p><br/>
+<img src="img/LandingPage.png" id="id" class="class" style="width:70.0%;height:70.0%" alt="Application Landing Page" /></p>
+<p>Population demographic data found in international household surveys often use binary responses to estimate prevalence rates in populations. Because of this, the application uses a logistic regression modeling approach. In addition, the distribution of effort in population health surveys is not equal within the regions, meaning that over-representation of sampling effort in some areas may bias results in others. For this reason, the application allows for use of a random effects model.</p>
+<p>At present, the app is not suitable for continuous response variables. Future iterations may provide this functionality.</p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="step-4-variable-harmonization-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="selecting-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-About-The-App.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
